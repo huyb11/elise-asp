@@ -1,0 +1,84 @@
+﻿@model EliseMVC.Models.tblProduct
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/LayoutAdmin/_AdminLayout.cshtml";
+}
+
+<h2 class="mt-3">Thêm sản phẩm</h2>
+
+@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.codeProduct)</th>
+            <td>@Html.TextBoxFor(m => m.codeProduct)</td>
+            <td>@Html.ValidationMessageFor(m => m.codeProduct)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.nameProduct)</th>
+            <td>@Html.TextBoxFor(m => m.nameProduct)</td>
+            <td>@Html.ValidationMessageFor(m => m.nameProduct)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.sizePro)</th>
+            <td>@Html.TextBoxFor(m => m.sizePro)</td>
+            <td>@Html.ValidationMessageFor(m => m.sizePro)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.quantityProductInput)</th>
+            <td>@Html.TextBoxFor(m => m.quantityProductInput)</td>
+            <td>@Html.ValidationMessageFor(m => m.quantityProductInput)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.priceProductInput)</th>
+            <td>@Html.TextBoxFor(m => m.priceProductInput)</td>
+            <td>@Html.ValidationMessageFor(m => m.priceProductInput)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.imageProduct1)</th>
+            <td>
+                <img src="@Url.Content(Model.imageProduct1)" style="width:100px;height:100px;object-fit:contain" />
+            </td>
+            <th>@Html.DisplayNameFor(m => m.imageProduct2)</th>
+            <td>
+                <img src="@Url.Content(Model.imageProduct2)" style="width: 100px; height: 100px; object-fit: contain" />
+            </td>
+            <th>@Html.DisplayNameFor(m => m.imageProduct3)</th>
+            <td>
+                <img src="@Url.Content(Model.imageProduct3)" style="width: 100px; height: 100px; object-fit: contain" />
+            </td>
+            <td>
+                @Html.ValidationMessageFor(m => m.imageProduct1)
+                @Html.ValidationMessageFor(m => m.imageProduct2)
+                @Html.ValidationMessageFor(m => m.imageProduct3)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="file" name="UploadImg1" id="previewImg1"
+                       onchange="ChangeImg1(this, document.getElementById('previewImg1'))" />
+            </td>
+            <td></td>
+            <td>
+                <input type="file" name="UploadImg2" id="previewImg2"
+                       onchange="ChangeImg2(this, document.getElementById('previewImg2'))" />
+            </td>
+            <td></td>
+            <td>
+                <input type="file" name="UploadImg3" id="previewImg3"
+                       onchange="ChangeImg3(this, document.getElementById('previewImg3'))" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Save" />
+            </td>
+        </tr>
+    </table>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
